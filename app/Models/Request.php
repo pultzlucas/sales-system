@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Request extends Model
 {
     use HasFactory;
-    protected $fillable = ['state'];
+    protected $fillable = ['state', 'customer_id'];
 }

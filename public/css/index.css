@@ -12,3 +12,21 @@
     font-weight: bold;
     font-size: 2rem;
 }
+
+.alert
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+}
+
+.alert .close
+{
+    border: none;
+    font-weight: bold;
+    font-size: 1.4rem;
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px 10px
+}

@@ -13,12 +13,12 @@ function finishRequest(btn)
         .then(({ id: requestId }) => {
             requestItemsList
                 .map(({ id }) => id)
-                .forEach(async itemId => {
-                    const res = await fetch(`/api/request_products?product_id=${itemId}&request_id=${requestId}`, {method: 'POST'})
-                    const data = await res.json()
+                .forEach(itemId => {
+                    fetch(`/api/request_products?product_id=${itemId}&request_id=${requestId}`, {method: 'POST'})
                 })
-            alert('Pedido criado com sucesso!')
             removeSpinnerFromBtn(btn)
+            alert('Pedido criado com sucesso!')
+            location.assign('/')
         })
         .catch(alert)
 }
