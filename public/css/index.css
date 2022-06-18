@@ -1,0 +1,14 @@
+.container
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.btn
+{
+    margin: 10px 0px;
+    padding: 40px;
+    font-weight: bold;
+    font-size: 2rem;
+}

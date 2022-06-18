@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description', 50);
             $table->float('price');
             $table->text('img_url', 100)->nullable();
+            $table->timestamps();
         });
     }
 

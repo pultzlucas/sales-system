@@ -1,0 +1,57 @@
+@import "./main.css";
+
+h1
+{
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+.products
+{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.product
+{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 320px;
+    margin-top: 10px;
+    transition: .5s;
+}
+
+.product:hover
+{
+    background: #f6f6f6;
+    transform: translateY(-10px);
+}
+
+.product h2
+{
+    font-size: 2.6rem;
+    color: #333;
+}
+
+.product img 
+{
+    max-height: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    min-width: 300px;
+}
+
+.product .price
+{
+    font-weight: bold;
+    background-color: #777;
+    color: #fff;
+    padding: 10px;
+    width: 300px;
+    margin-top: 10px;
+}

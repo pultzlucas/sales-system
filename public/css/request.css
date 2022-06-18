@@ -1,0 +1,183 @@
+@import "./main.css";
+
+:root
+{
+    --request-view-h: 170px;
+}
+
+::-webkit-scrollbar{
+    height: 5px;
+    width: 5px;
+    background: #eee;
+}
+::-webkit-scrollbar-thumb{
+    background: #666;
+    border-radius: 10px;
+}
+
+.container-fluid
+{
+    margin-bottom: var(--request-view-h)
+}
+
+h1
+{
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+hr
+{
+    margin-bottom: 0px;
+}
+
+.products
+{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.product
+{
+    flex-grow: 1;
+    /* margin-top: 10px; */
+}
+
+.product h2
+{
+    color: #333;
+    margin: 10px 0px;
+}
+
+.product-body
+{
+    display: flex;
+}
+
+.product-controls
+{
+    flex-grow: 1;
+    padding: 0px 10px;
+}
+
+.product-body button
+{
+    border-radius: 10px;
+    width: 180px;
+}
+
+.product img 
+{
+    max-height: 100px;
+    max-width: 100px;
+    min-height: 100px;
+    min-width: 100px;
+}
+
+.product .price
+{
+    font-weight: bold;
+    background-color: #777;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Request View */
+
+.request-view
+{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    min-height: var(--request-view-h);
+    background: #fff;
+    padding: 10px;
+    border-top: 2px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.request-items
+{
+    display: flex;
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.request-items p
+{
+    width: 100%;
+    text-align: center;
+}
+
+.request-item
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 80px;
+    max-width: 80px;
+}
+
+.request-item img
+{
+    width: 54px;
+    height: 54px;
+    border-radius: 5px
+}
+
+.request-item .item-price
+{
+    font-weight: 600;
+    margin: 0px;
+}
+
+.request-item button
+{
+    width: 60px;
+    font-size: 10px;
+    padding: 2px;
+}
+
+.request-view-controls 
+{
+    display: flex;
+    margin-top: 10px;
+}
+
+.request-view-controls .total-view
+{
+    display: flex;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    width: 50%;
+}
+
+.request-view-controls .total-view h4
+{
+    font-size: 1rem;
+    margin: 0px 10px 0px 5px;
+}
+
+.request-view-controls .total-view .total
+{
+    background: #fff;
+    flex-grow: 1;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.request-view-controls button
+{
+    flex-grow: 1;
+    margin-left: 10px;
+}

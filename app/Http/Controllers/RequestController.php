@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Request as RequestModel;
+use Illuminate\Support\Facades\DB;
 
 class RequestController extends Controller
 {
@@ -14,17 +15,21 @@ class RequestController extends Controller
     
     function get($id)
     {
-        return RequestModel::findOrFail($id);
+        $request = RequestModel::findOrFail($id);
+        $request_products = DB::select("SELECT prod.description, prod.price FROM products AS prod
+            JOIN request_products AS rp ON rp.product_id=prod.id 
+            WHERE rp.request_id=$id");
+        $total_price = array_reduce($request_products, function($total, $item) {return $total + $item->price;}, 0.00);
+
+        $request->items = $request_products;
+        $request->total_price = $total_price;
+
+        return $request;
     }
 
-    function store(Request $request)
+    function store()
     {
-        $request->validate([
-            'product_id' => 'required'
-        ]);
-
         return RequestModel::create([
-            'product_id' => $request->product_id,
             'state' => 'pending'
         ]);
     }
