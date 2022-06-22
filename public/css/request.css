@@ -5,16 +5,6 @@
     --request-view-h: 170px;
 }
 
-::-webkit-scrollbar{
-    height: 5px;
-    width: 5px;
-    background: #eee;
-}
-::-webkit-scrollbar-thumb{
-    background: #666;
-    border-radius: 10px;
-}
-
 .container-fluid
 {
     margin-bottom: var(--request-view-h)

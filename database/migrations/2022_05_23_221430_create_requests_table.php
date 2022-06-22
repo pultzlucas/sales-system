@@ -16,7 +16,13 @@ return new class extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id')->unique();
-            $table->enum('state', ['pending', 'finished']);
+            $table->enum('state', [
+                '0', // Denied
+                '1', // Waiting confirmation
+                '2', // Pending
+                '3', // Finished
+                '4'  // Delivered
+            ]);
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');

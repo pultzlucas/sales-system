@@ -1,3 +1,5 @@
+@import './main.css';
+
 .container
 {
     display: flex;
@@ -5,7 +7,15 @@
     height: 100%;
 }
 
-.btn
+.request-view
+{
+    border: 2px #eee solid;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+.btn-secondary
 {
     margin: 10px 0px;
     padding: 40px;

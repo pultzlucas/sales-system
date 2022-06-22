@@ -13,6 +13,11 @@ class Customer extends Model
 
     static function alreadyRequest($customer_id)
     {
-        return !!RequestModel::where('customer_id', '=', $customer_id)->first();
+        return !!Customer::getRequest($customer_id);
+    }
+
+    static function getRequest($customer_id)
+    {
+        return RequestModel::where('customer_id', '=', $customer_id)->first();
     }
 }

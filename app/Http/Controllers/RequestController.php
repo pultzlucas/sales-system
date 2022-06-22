@@ -16,16 +16,7 @@ class RequestController extends Controller
     
     function get($id)
     {
-        $request = RequestModel::findOrFail($id);
-        $request_products = DB::select("SELECT prod.description, prod.price FROM products AS prod
-            JOIN request_products AS rp ON rp.product_id=prod.id 
-            WHERE rp.request_id=$id");
-        $total_price = array_reduce($request_products, function($total, $item) {return $total + $item->price;}, 0.00);
-
-        $request->items = $request_products;
-        $request->total_price = $total_price;
-
-        return $request;
+        return RequestModel::getFullInfo($id);
     }
 
     function store(Request $request)
@@ -38,15 +29,15 @@ class RequestController extends Controller
             ]);
         }
 
-        if(Customer::alreadyRequest($customer->id))
-        {
-            return response()->json([
-                'message' => 'Não é permitido fazer 2 ou mais pedidos ao mesmo tempo'
-            ], 401);
-        }
+        // if(Customer::alreadyRequest($customer->id))
+        // {
+        //     return response()->json([
+        //         'message' => 'Não é permitido fazer 2 ou mais pedidos ao mesmo tempo'
+        //     ], 401);
+        // }
 
         return RequestModel::create([
-            'state' => 'pending',
+            'state' => '1',
             'customer_id' => $customer->id
         ]);
     }

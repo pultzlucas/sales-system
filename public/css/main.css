@@ -3,3 +3,19 @@
     border-radius: 10px;
     box-shadow: 1px 1px 5px #aaa;
 }
+
+h1
+{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+::-webkit-scrollbar{
+    height: 5px;
+    width: 5px;
+    background: #eee;
+}
+::-webkit-scrollbar-thumb{
+    background: #666;
+    border-radius: 10px;
+}
