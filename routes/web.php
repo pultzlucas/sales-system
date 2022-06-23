@@ -45,9 +45,21 @@ Route::get('/request', function(Request $request) {
     return view('request', ['products' => $products]);
 });
 
-Route::get('/admin', function() {
-    $requests = RequestModel::getAllFullInfoByState('1');
-    return view('admin', [
-        'requests' => $requests
-    ]);
+Route::group(['prefix' => '/admin'], function() {
+    Route::get('/', function() {
+        $requests = RequestModel::getAllFullInfoByState('1');
+        return view('admin.index', [
+            'requests' => $requests
+        ]);
+    });
+
+    Route::get('/pending', function() {
+        $requests = RequestModel::getAllFullInfoByState('2');
+        return view('admin.pending', [
+            'requests' => $requests
+        ]);
+    });
 });
+
+
+

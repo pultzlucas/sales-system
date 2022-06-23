@@ -15,6 +15,23 @@
 </head>
 <body>
     <main class="container">
+        <h1>Pedidos</h1>
+
+        <ul class="nav nav-tabs mt-2">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Confirmação</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/admin/pending">Em preparo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">Prontos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">Negados</a>
+            </li>
+        </ul>
+
         <ul class="requests">
             @foreach ($requests as $req)
             <li id="{{$req->id}}">
@@ -66,8 +83,8 @@
                             </div>
                         </div>
                         <div class="request-controls">
-                            <button onclick="confirmRequest(this.parentNode.parentNode.parentNode.parentNode)" class="btn btn-success">Aceitar</button>
-                            <button onclick="denyRequest(this.parentNode.parentNode.parentNode.parentNode)" class="btn btn-danger">Negar</button>
+                            <button onclick="finishRequest(this.parentNode.parentNode.parentNode.parentNode)" class="btn btn-success">Pronto</button>
+                            <button onclick="cancelRequest(this.parentNode.parentNode.parentNode.parentNode)" class="btn btn-danger">Cancelar</button>
                         </div>
                     </div>
                 </div>
@@ -75,7 +92,8 @@
             @endforeach
         </ul>
     </main>
-    <script src="/js/admin/confirmation.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="/js/admin/pending.js"></script>
 </body>
 
 </html>
