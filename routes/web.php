@@ -46,7 +46,7 @@ Route::get('/request', function(Request $request) {
 });
 
 Route::get('/admin', function() {
-    $requests = RequestModel::getAllFullInfo();
+    $requests = RequestModel::getAllFullInfoByState('1');
     return view('admin', [
         'requests' => $requests
     ]);

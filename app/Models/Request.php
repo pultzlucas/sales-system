@@ -33,7 +33,7 @@ class Request extends Model
         foreach($requests as $req) {
             $request_products = DB::select("SELECT prod.description, prod.price FROM products AS prod
                 JOIN request_products AS rp ON rp.product_id=prod.id 
-                WHERE rp.request_id=" . $req->id);
+                WHERE rp.request_id=$req->id");
             $total_price = array_reduce($request_products, function($total, $item) {return $total + $item->price;}, 0.00);
 
             $req->items = $request_products;
@@ -42,5 +42,13 @@ class Request extends Model
         }
 
         return $requests_full_info;
+    }
+
+    static function getAllFullInfoByState($state)
+    {
+        $requests = Request::getAllFullInfo();
+        return array_filter($requests, function($req) use ($state) {
+            return $req->state === $state;
+        });
     }
 }

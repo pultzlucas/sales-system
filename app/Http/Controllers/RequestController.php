@@ -54,6 +54,11 @@ class RequestController extends Controller
         ];
     }
 
-    function update(Request $request)
-    {}
+    function update($id, Request $request)
+    {
+        $request_el = RequestModel::findOrFail($id);
+        $request_el->state = $request->state;
+        $request_el->save();
+        return $request_el;
+    }
 }

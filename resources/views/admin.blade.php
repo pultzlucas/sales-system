@@ -66,8 +66,8 @@
                             </div>
                         </div>
                         <div class="request-controls">
-                            <button class="btn btn-success">Aceitar</button>
-                            <button class="btn btn-danger">Negar</button>
+                            <button onclick="confirmRequest(this.parentNode.parentNode.parentNode.parentNode)" class="btn btn-success">Aceitar</button>
+                            <button onclick="denyRequest(this.parentNode.parentNode.parentNode.parentNode)" class="btn btn-danger">Negar</button>
                         </div>
                     </div>
                 </div>
@@ -75,6 +75,7 @@
             @endforeach
         </ul>
     </main>
+    <script src="/js/admin/confirmation.js"></script>
 </body>
 
 </html>
