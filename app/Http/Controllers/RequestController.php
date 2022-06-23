@@ -29,15 +29,7 @@ class RequestController extends Controller
             ]);
         }
 
-        // if(Customer::alreadyRequest($customer->id))
-        // {
-        //     return response()->json([
-        //         'message' => 'Não é permitido fazer 2 ou mais pedidos ao mesmo tempo'
-        //     ], 401);
-        // }
-
         return RequestModel::create([
-            'state' => '1',
             'customer_id' => $customer->id
         ]);
     }
@@ -47,18 +39,18 @@ class RequestController extends Controller
         if(!RequestModel::find($id))
         {
             return [
-                'message' => 'Este comando não existe'
+                'message' => 'Este pedido não existe'
             ];
         }
         
         if(RequestModel::destroy($id))
         {
             return [
-                'message' => 'Comando foi deletado com sucesso'
+                'message' => 'Pedido foi deletado com sucesso'
             ];
         }
         return [
-            'message' => 'Erro ao deletar comando'
+            'message' => 'Erro ao deletar pedido'
         ];
     }
 

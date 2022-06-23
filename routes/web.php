@@ -44,3 +44,10 @@ Route::get('/request', function(Request $request) {
     $products = Product::all();
     return view('request', ['products' => $products]);
 });
+
+Route::get('/admin', function() {
+    $requests = RequestModel::getAllFullInfo();
+    return view('admin', [
+        'requests' => $requests
+    ]);
+});

@@ -19,3 +19,9 @@ h1
     background: #666;
     border-radius: 10px;
 }
+
+ul
+{
+    list-style: none;
+    padding: 0px;
+}

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Request extends Model
 {
     use HasFactory;
-    protected $fillable = ['state', 'customer_id'];
+    protected $fillable = ['customer_id'];
 
     static function getFullInfo($id)
     {
@@ -23,5 +23,24 @@ class Request extends Model
         $request->total_price = $total_price;
 
         return $request;
+    }
+
+    static function getAllFullInfo()
+    {
+        $requests = Request::all();
+        $requests_full_info = [];
+
+        foreach($requests as $req) {
+            $request_products = DB::select("SELECT prod.description, prod.price FROM products AS prod
+                JOIN request_products AS rp ON rp.product_id=prod.id 
+                WHERE rp.request_id=" . $req->id);
+            $total_price = array_reduce($request_products, function($total, $item) {return $total + $item->price;}, 0.00);
+
+            $req->items = $request_products;
+            $req->total_price = $total_price;
+            array_push($requests_full_info, $req);
+        }
+
+        return $requests_full_info;
     }
 }

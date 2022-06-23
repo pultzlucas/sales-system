@@ -22,7 +22,7 @@ return new class extends Migration
                 '2', // Pending
                 '3', // Finished
                 '4'  // Delivered
-            ]);
+            ])->default('1');
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');

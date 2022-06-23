@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Request;
+use App\Models\Request as RequestModel;
 use App\Models\Product;
+use App\Models\Customer;
+use App\Models\RequestProduct;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,25 +18,68 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Product::create([
-            'description' => 'Carne',
-            'price' => 10.00,
-            'img_url' => 'https://i0.wp.com/shoppingdostemperos.com.br/wp-content/uploads/2018/10/Espetinho-De-Carne-Como-Fazer.png?fit=348%2C341&ssl=1'
+        $items = [
+            Product::create([
+                'description' => 'Carne',
+                'price' => 10.00,
+                'img_url' => 'https://i0.wp.com/shoppingdostemperos.com.br/wp-content/uploads/2018/10/Espetinho-De-Carne-Como-Fazer.png?fit=348%2C341&ssl=1'
+            ])->id,
+            Product::create([
+                'description' => 'Kafta',
+                'price' => 8.00,
+                'img_url' => 'https://t2.rg.ltmcdn.com/pt/posts/2/5/2/kafta_de_frango_1252_orig.jpg'
+            ])->id,
+            Product::create([
+                'description' => 'Queijo Coalho',
+                'price' => 6.00,
+                'img_url' => 'https://www.vivaespetos.com.br/wp-content/uploads/2019/05/quijocoalho.jpg'
+            ])->id,
+            Product::create([
+                'description' => 'Medalhão',
+                'price' => 10.00,
+                'img_url' => 'https://i2.wp.com/receitasdedomingo.com.br/wp-content/uploads/2020/09/espetinho-medalhao-apimentado.jpg?fit=939%2C575&ssl=1'
+            ])->id
+        ];
+
+        $customer1 = Customer::create([
+            'ip_address' => '192.234.234.1'
         ]);
-        Product::create([
-            'description' => 'Kafta',
-            'price' => 8.00,
-            'img_url' => 'https://t2.rg.ltmcdn.com/pt/posts/2/5/2/kafta_de_frango_1252_orig.jpg'
+        
+        $customer2 = Customer::create([
+            'ip_address' => '192.234.234.2'
         ]);
-        Product::create([
-            'description' => 'Queijo Coalho',
-            'price' => 6.00,
-            'img_url' => 'https://www.vivaespetos.com.br/wp-content/uploads/2019/05/quijocoalho.jpg'
+
+        $request1 = RequestModel::create([
+            'customer_id' => $customer1->id
         ]);
-        Product::create([
-            'description' => 'Medalhão',
-            'price' => 10.00,
-            'img_url' => 'https://i2.wp.com/receitasdedomingo.com.br/wp-content/uploads/2020/09/espetinho-medalhao-apimentado.jpg?fit=939%2C575&ssl=1'
+
+        $request2 = RequestModel::create([
+            'customer_id' => $customer2->id
+        ]);
+
+        RequestProduct::create([
+            'request_id' => $request1->id,
+            'product_id' => $items[0]
+        ]);
+        
+        RequestProduct::create([
+            'request_id' => $request1->id,
+            'product_id' => $items[1]
+        ]);
+
+        RequestProduct::create([
+            'request_id' => $request2->id,
+            'product_id' => $items[0]
+        ]);
+        
+        RequestProduct::create([
+            'request_id' => $request2->id,
+            'product_id' => $items[1]
+        ]);
+
+        RequestProduct::create([
+            'request_id' => $request2->id,
+            'product_id' => $items[1]
         ]);
     }
 }

@@ -25,7 +25,7 @@
     
     <main class="container">
         @if ($request_info)
-        <section class="request-view">
+        <section class="request-view" id="{{$request_info->id}}">
             <h1>Pedido</h1>
             <table class="table">
                 <tr>
@@ -37,12 +37,12 @@
                     <td class="request_status" id="{{$request_info->state}}"><strong>@translate_status($request_info->state)</strong></td>
                 </tr>
                 <tr>
-                    <td><strong>Pedido feito em</strong></td>
-                    <td>{{$request_info->created_at}}</td>
+                    <td><strong>Preço total</strong></td>
+                    <td><span class="request-total-price">@to_currency($request_info->total_price)</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Preço total</strong></td>
-                    <td>@to_currency($request_info->total_price)</td>
+                    <td><strong>Pedido feito em</strong></td>
+                    <td>{{$request_info->created_at}}</td>
                 </tr>
             </table>
            
@@ -76,9 +76,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-3">
-                <button class="btn btn-danger">Cancelar pedido</button>
-            </div>
+            <button onclick="deleteRequest(this)" class="btn btn-danger">Cancelar pedido</button>
         </section>
         @endif
 
@@ -97,6 +95,7 @@
         })
     </script>
     <script src="/js/index.js"></script>
+    <script src="/js/utils/color-rq-state.js"></script>
 </body>
 
 </html>
