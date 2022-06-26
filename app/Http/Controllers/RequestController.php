@@ -19,6 +19,11 @@ class RequestController extends Controller
         return RequestModel::getFullInfo($id);
     }
 
+    function getByState($state)
+    {
+        return RequestModel::getAllFullInfoByState((string) $state);
+    }
+
     function store(Request $request)
     {
         $customer = Customer::where('ip_address', '=', $request->ip())->first();

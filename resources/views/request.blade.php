@@ -43,6 +43,7 @@
             </button>
         </div>
     </div>
+    <script src="/js/spinner.js"></script>
     <script src="/js/request.js"></script>
 </body>
 

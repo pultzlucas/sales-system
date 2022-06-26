@@ -47,8 +47,12 @@ class Request extends Model
     static function getAllFullInfoByState($state)
     {
         $requests = Request::getAllFullInfo();
-        return array_filter($requests, function($req) use ($state) {
-            return $req->state === $state;
-        });
+        $state_requests = [];
+        foreach($requests as $req) {
+            if($req->state === $state) {
+                array_push($state_requests, $req);
+            }
+        }
+        return $state_requests;
     }
 }

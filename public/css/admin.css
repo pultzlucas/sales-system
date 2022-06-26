@@ -1,5 +1,17 @@
 @import "./main.css";
 
+.nav-item button
+{
+    padding: 6px;
+}
+
+.request-list-placeholder
+{
+    color: #666;
+    text-align: center;
+    margin-top: 20px;
+}
+
 .requests
 {
     display: flex;

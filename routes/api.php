@@ -11,6 +11,7 @@ Route::get('/products/{id}', [ProductController::class, 'get']);
 
 Route::get('/requests', [RequestController::class, 'index']);
 Route::get('/requests/{id}', [RequestController::class, 'get']);
+Route::get('/requests/state/{state}', [RequestController::class, 'getByState']);
 Route::post('/requests', [RequestController::class, 'store']);
 Route::put('/requests/{id}', [RequestController::class, 'update']);
 Route::delete('/requests/{id}', [RequestController::class, 'destroy']);
