@@ -54,6 +54,10 @@ class RequestController extends Controller
                 'message' => 'Este pedido não existe'
             ];
         }
+
+        $db = app('firebase.database');
+        $db_req = $db->getReference("/requests/$id");
+        $db_req->set(null);
         
         if(RequestModel::destroy($id))
         {
@@ -61,6 +65,7 @@ class RequestController extends Controller
                 'message' => 'Pedido foi deletado com sucesso'
             ];
         }
+
         return [
             'message' => 'Erro ao deletar pedido'
         ];
@@ -71,6 +76,11 @@ class RequestController extends Controller
         $request_el = RequestModel::findOrFail($id);
         $request_el->state = $request->state;
         $request_el->save();
+
+        $db = app('firebase.database');
+        $db_req = $db->getReference("/requests/$id");
+        $db_req->set(['state' => $request->state]);
+
         return $request_el;
     }
 }
