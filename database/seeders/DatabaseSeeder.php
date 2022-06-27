@@ -57,6 +57,18 @@ class DatabaseSeeder extends Seeder
             'customer_id' => $customer2->id
         ]);
 
+        $db = app('firebase.database');
+
+        $db->getReference("/requests")->set(null);
+
+        $db->getReference("/requests/$request1->id")->set([
+            'state' => '1'
+        ]);
+
+        $db->getReference("/requests/$request2->id")->set([
+            'state' => '1'
+        ]);
+
         RequestProduct::create([
             'request_id' => $request1->id,
             'product_id' => $items[0]

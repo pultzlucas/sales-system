@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Request extends Model
 {
     use HasFactory;
-    protected $fillable = ['customer_id'];
+    protected $fillable = ['customer_id', 'state'];
 
     static function getFullInfo($id)
     {
