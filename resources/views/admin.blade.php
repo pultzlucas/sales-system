@@ -47,40 +47,6 @@
     <script type="module" src="/js/admin/load-requests.js"></script>
     <script src="/js/spinner.js"></script>
     <script src="/js/admin/request-controls.js"></script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-database.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyD321D2bwStA_ceuFvUXAynXTa5l2KIsis",
-          authDomain: "juneterealtimedb.firebaseapp.com",
-          databaseURL: "https://juneterealtimedb-default-rtdb.firebaseio.com",
-          projectId: "juneterealtimedb",
-          storageBucket: "juneterealtimedb.appspot.com",
-          messagingSenderId: "787964355463",
-          appId: "1:787964355463:web:54154b7b534f6f87a36922"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase()
-        // set(requests)
-        
-        function addRequestToDatabase(request) {
-            const requests = ref(db, `/requests/${request.id}`)
-            set(requests, request)
-        }
-
-        addRequestToDatabase({
-            id: 2,
-            state: 1
-        })
-
-      </script>
 </body>
 
 </html>

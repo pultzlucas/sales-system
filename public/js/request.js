@@ -11,7 +11,6 @@ function finishRequest(btn)
     fetch('api/requests', { method: 'POST' })
         .then(res => res.json())
         .then(({ id: requestId, state }) => {
-            console.log(state)
             requestItemsList
                 .map(({ id }) => id)
                 .forEach(itemId => {

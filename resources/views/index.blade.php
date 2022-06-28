@@ -31,7 +31,7 @@
             <table class="table">
                 <tr>
                     <td><strong>Número</strong></td>
-                    <td>{{$request_info->id}}</td>
+                    <td class="request-id">{{$request_info->id}}</td>
                 </tr>
                 <tr>
                     <td><strong>Status do pedido</strong></td>
@@ -97,6 +97,7 @@
     </script>
     <script src="/js/index.js"></script>
     <script src="/js/utils/color-rq-state.js"></script>
+    <script type="module" src="/js/firebase/index.js"></script>
 </body>
 
 </html>
