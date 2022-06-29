@@ -1,3 +1,6 @@
+import db from './firebase/config.js'
+import { ref, set } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-database.js" 
+
 const requestItemsListElem = document.querySelector('.request-items')
 let totalRequestPrice = 0.00
 
@@ -5,17 +8,31 @@ const requestItemsList = []
 
 const finishRequestBtn = document.querySelector('.btn-finish-request')
 
-function finishRequest(btn)
+document.querySelector('.btn-finish-request').addEventListener('click', finishRequest)
+document.querySelectorAll('.product').forEach(item => {
+    item.querySelector('button').addEventListener('click', addToRequest)
+})
+
+function finishRequest(e)
 {
+    const btn = e.target
     addSpinnerToBtn(btn)
     fetch('api/requests', { method: 'POST' })
         .then(res => res.json())
-        .then(({ id: requestId, state }) => {
+        .then(({ id: requestId }) => {
+            // Linking items to request
             requestItemsList
                 .map(({ id }) => id)
                 .forEach(itemId => {
                     fetch(`/api/request_products?product_id=${itemId}&request_id=${requestId}`, {method: 'POST'})
                 })
+
+            // Save request on real time database
+            set(ref(db, 'requests/' + requestId), {
+                id: requestId,
+                state: '1'
+            })
+
             removeSpinnerFromBtn(btn)
             alert('Pedido criado com sucesso!')
             location.assign('/')
@@ -23,8 +40,13 @@ function finishRequest(btn)
         .catch(alert)
 }
 
-function addToRequest(productId, buttonClicked) 
+
+function addToRequest(e) 
 {
+    e.stopPropagation()
+    const buttonClicked = e.target
+    const productId = e.target.parentNode.parentNode.parentNode.id
+
     addSpinnerToBtn(buttonClicked)
     getProduct(productId)
         .then(product => {

@@ -20,7 +20,7 @@
                     <img class="box" src="{{$prod->img_url}}" alt="{{$prod->description}} image">
                     <div class="product-controls">
                         <p class="price">@to_currency($prod->price)</p>
-                        <button onclick="addToRequest({{$prod->id}}, this)" class="btn btn-success">
+                        <button class="btn btn-success">
                             <span class="title">Adicionar ao pedido</span>
                         </button>
                     </div>
@@ -38,13 +38,13 @@
                 <h4>Total R$</h4>
                 <span class="total">0,00</span>
             </div>
-            <button onclick="finishRequest(this)" class="btn btn-success btn-finish-request" disabled>
+            <button class="btn btn-success btn-finish-request" disabled>
                 <span class="title">Finalizar pedido</span>
             </button>
         </div>
     </div>
     <script src="/js/spinner.js"></script>
-    <script src="/js/request.js"></script>
+    <script type="module" src="/js/request.js"></script>
 </body>
 
 </html>

@@ -3,15 +3,15 @@ import getRequestElement from './request-dom.js'
 
 const requestsList = document.querySelector('.requests')
 
-req.getConfirmRequests().then(addRequestsToList)
+// req.getConfirmRequests().then(addRequestsToList)
 
 // TABS
 
 // Confirmation
-document.querySelector('#state_1').addEventListener('click', () => {
-    resetRequestList()
-    req.getConfirmRequests().then(addRequestsToList)
-})
+// document.querySelector('#state_1').addEventListener('click', () => {
+//     resetRequestList()
+//     req.getConfirmRequests().then(addRequestsToList)
+// })
 
 // Pending
 document.querySelector('#state_2').addEventListener('click', () => {

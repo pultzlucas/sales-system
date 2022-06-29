@@ -10,7 +10,7 @@ export default function getRequestElement(req) {
                 </tr>
                 <tr>
                     <td><strong>Preço total</strong></td>
-                    <td><span class="request-total-price">${req.total_price}</span></td>
+                    <td><span class="request-total-price">${floatToCurrency(req.total_price)}</span></td>
                 </tr>
                 <tr>
                     <td><strong>Pedido feito em</strong></td>
@@ -50,7 +50,6 @@ export default function getRequestElement(req) {
 }
 
 function getRequestControlsElement(id, state) {
-    console.log(state != 4 && state != 0)
     return state != 4 && state != 0 ? ` 
     <div class="request-controls">            
         <button onclick="increaseState(${id}, this)" class="btn btn-success">

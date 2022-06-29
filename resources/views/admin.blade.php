@@ -45,6 +45,7 @@
     </main>
 
     <script type="module" src="/js/admin/load-requests.js"></script>
+    <script type="module" src="/js/firebase/admin.js"></script>
     <script src="/js/spinner.js"></script>
     <script src="/js/admin/request-controls.js"></script>
 </body>

@@ -62,11 +62,13 @@ class DatabaseSeeder extends Seeder
         $db->getReference("/requests")->set(null);
 
         $db->getReference("/requests/$request1->id")->set([
-            'state' => '1'
+            'state' => '1',
+            'id' => $request1->id
         ]);
 
         $db->getReference("/requests/$request2->id")->set([
-            'state' => '1'
+            'state' => '1',
+            'id' => $request2->id
         ]);
 
         RequestProduct::create([

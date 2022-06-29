@@ -38,10 +38,11 @@ class RequestController extends Controller
             'customer_id' => $customer->id,
         ]);
 
-        $db = app('firebase.database');
-        $db->getReference("/requests/$req->id")->set([
-            'state' => '1'
-        ]);
+        // $db = app('firebase.database');
+        // $db->getReference("/requests/$req->id")->set([
+        //     'state' => '1',
+        //     'id' => $req->id
+        // ]);
 
         return $req;
     }

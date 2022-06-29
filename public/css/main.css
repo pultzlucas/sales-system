@@ -4,6 +4,11 @@
     box-shadow: 1px 1px 5px #aaa;
 }
 
+span 
+{
+    pointer-events: none;
+}
+
 h1
 {
     text-align: center;
