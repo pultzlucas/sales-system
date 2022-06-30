@@ -90,7 +90,7 @@ function getDismissButtonTextFromState(state) {
 function getRequestItemElement(item) {
     return `
     <tr class="request-item">
-    <td>${item.description}</td>
+    <td>${item.name}</td>
     <td>${floatToCurrency(item.price)}</td>
     </tr>`
 }

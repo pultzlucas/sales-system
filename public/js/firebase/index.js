@@ -5,10 +5,12 @@ const requestId = document.querySelector('.request-id')
 if(requestId) {
     const requests = ref(db, `requests/${requestId.textContent}`)        
     onValue(requests, snapshot => {
-        const state = snapshot.val().state
-        removeCancelRequestBtn(state)
-        changeRequestState(state)
-        displayStateMessage(state)
+        if(snapshot.val()) {
+            const state = snapshot.val().state
+            removeCancelRequestBtn(state)
+            changeRequestState(state)
+            displayStateMessage(state)
+        }
     })
 }
 

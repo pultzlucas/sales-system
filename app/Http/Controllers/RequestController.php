@@ -34,17 +34,9 @@ class RequestController extends Controller
             ]);
         }
 
-        $req = RequestModel::create([
+        return RequestModel::create([
             'customer_id' => $customer->id,
         ]);
-
-        // $db = app('firebase.database');
-        // $db->getReference("/requests/$req->id")->set([
-        //     'state' => '1',
-        //     'id' => $req->id
-        // ]);
-
-        return $req;
     }
 
     function destroy($id)

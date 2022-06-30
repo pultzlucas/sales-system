@@ -16,9 +16,10 @@
     <div class="products">
         @foreach ($products as $prod)
         <div class="product">
-            <h2>{{ $prod->description }}</h2>
-            <img class="box" src="{{$prod->img_url}}" alt="{{$prod->description}} image">
-            <p class="price box">@to_currency($prod->price)</p>
+            <h2>{{ $prod->name }}</h2>
+            <img class="box" src="{{$prod->img_url}}" alt="{{$prod->name}} image">
+            <span class="price box">@to_currency($prod->price)</p>
+            <p>{{$prod->description}}</p>
         </div>
         @endforeach
     </div>

@@ -15,7 +15,7 @@
         <section class="products">
             @foreach ($products as $prod)
             <div class="product" id="{{$prod->id}}">
-                <h2>{{ $prod->description }}</h2>
+                <h2>{{ $prod->name }}</h2>
                 <div class="product-body">
                     <img class="box" src="{{$prod->img_url}}" alt="{{$prod->description}} image">
                     <div class="product-controls">

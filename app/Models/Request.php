@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 
 class Request extends Model
 {
@@ -14,9 +15,7 @@ class Request extends Model
     static function getFullInfo($id)
     {
         $request = Request::findOrFail($id);
-        $request_products = DB::select("SELECT prod.description, prod.price FROM products AS prod
-            JOIN request_products AS rp ON rp.product_id=prod.id 
-            WHERE rp.request_id=$id");
+        $request_products = Product::getProductsOfRequest($id);
         $total_price = array_reduce($request_products, function($total, $item) {return $total + $item->price;}, 0.00);
 
         $request->items = $request_products;
@@ -31,9 +30,7 @@ class Request extends Model
         $requests_full_info = [];
 
         foreach($requests as $req) {
-            $request_products = DB::select("SELECT prod.description, prod.price FROM products AS prod
-                JOIN request_products AS rp ON rp.product_id=prod.id 
-                WHERE rp.request_id=$req->id");
+            $request_products = Product::getProductsOfRequest($req->id);
             $total_price = array_reduce($request_products, function($total, $item) {return $total + $item->price;}, 0.00);
 
             $req->items = $request_products;

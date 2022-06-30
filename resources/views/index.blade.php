@@ -68,7 +68,7 @@
                            <tbody>
                             @foreach ($request_info->items as $item)
                                 <tr class="request-item">
-                                    <td>{{$item->description}}</td>
+                                    <td>{{$item->name}}</td>
                                     <td>@to_currency($item->price)</td>
                                 </tr>
                             @endforeach
