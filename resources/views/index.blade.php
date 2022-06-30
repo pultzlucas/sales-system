@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <button onclick="deleteRequest(this)" class="btn btn-danger">Cancelar pedido</button>
+            <button onclick="deleteRequest(this)" class="btn btn-danger btn-cancel-request">Cancelar pedido</button>
         </section>
         @endif
 

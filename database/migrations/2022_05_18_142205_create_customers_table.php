@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->text('ip_address', 20)->unique();
+            $table->ipAddress('ip_address')->unique();
             $table->timestamps();
         });
     }

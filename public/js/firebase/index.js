@@ -5,8 +5,19 @@ const requestId = document.querySelector('.request-id')
 if(requestId) {
     const requests = ref(db, `requests/${requestId.textContent}`)        
     onValue(requests, snapshot => {
-        changeRequestState(snapshot.val().state)
+        const state = snapshot.val().state
+        removeCancelRequestBtn(state)
+        changeRequestState(state)
+        displayStateMessage(state)
     })
+}
+
+function removeCancelRequestBtn(state) {
+    const btn = document.querySelector('.btn-cancel-request')
+    btn.removeAttribute('hidden')
+    if(state === '4') {
+        btn.setAttribute('hidden', '')
+    }
 }
 
 function changeRequestState(state) {
@@ -16,6 +27,28 @@ function changeRequestState(state) {
     const requestStateText = requestState.querySelector('strong')
     requestStateText.textContent = getRequestStateText(state)
     requestStateText.style.color = getTextColorFromState(state)
+}
+
+function displayStateMessage(state) {
+    switch(Number(state)) {
+        case 0: // Denied
+            alert('Seu pedido foi cancelado')
+            break
+        case 1: // Waiting confirmation
+            alert('Esperando confirmação do pedido na barraca. Quando for confirmado aparecerá no status do pedido')
+            break
+        case 2: // Pending
+            alert('Seu pedido está em preparo. Logo logo ele estará pronto, só esperar')
+            break
+        case 3: // Finished
+            alert('Seu pedido está pronto!!! Para retirar redija-se até a nossa barraca')
+            break
+        case 4: // Delivered
+            alert('Seu pedido foi entregue. Bom apetite!')
+            break
+        default:// Unknown
+            alert('Algum erro inesperado ocorreu com o seu pedido. Tente novamente mais tarde')
+    }
 }
 
 function getTextColorFromState(state) {
