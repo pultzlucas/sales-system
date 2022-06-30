@@ -1,7 +1,6 @@
 const requestsList = document.querySelector('.requests')
 
 function increaseState(requestId, btn) {
-    // removeRequestFromList({id: requestId})
     addSpinnerToBtn(btn)
     fetch(`/api/requests/${requestId}`)
         .then(res => res.json())
@@ -9,14 +8,15 @@ function increaseState(requestId, btn) {
             fetch(`/api/requests/${id}?state=${Number(state) + 1}`, { method: 'PUT' })
                 .then(res => res.json())
                 .then(req => {
-                    removeRequestFromList(req)
+                    if(state !== '1') {
+                        removeRequestFromList(req)
+                    }
                     removeSpinnerFromBtn(btn)
                 })
         })
 }
 
 function cancel(requestId, btn) {
-    // removeRequestFromList({id: requestId})
     addSpinnerToBtn(btn)
     fetch(`/api/requests/${requestId}?state=0`, { method: 'PUT' })
         .then(res => res.json())

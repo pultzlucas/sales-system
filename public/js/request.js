@@ -34,7 +34,7 @@ function finishRequest(e)
             })
 
             removeSpinnerFromBtn(btn)
-            alert('Pedido criado com sucesso!')
+            console.log('Pedido criado com sucesso!')
             location.assign('/')
         })
         .catch(alert)

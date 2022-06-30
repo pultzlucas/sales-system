@@ -21,7 +21,7 @@ async function addConfirmRequestsToList(snapshot) {
     
     // Hide placeholder and spinner
     document.querySelector('.spinner-border').setAttribute('hidden', '')    
-    if(requestsList.childNodes.length === 0) {
+    if(listHTML === '') {
         document.querySelector('.request-list-placeholder').removeAttribute('hidden')
     }
 }
