@@ -16,14 +16,35 @@
 </head>
 <body>
     @if (Session::has('error'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{Session::get('error')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{Session::get('error')}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     @endif
     
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationPopup" tabindex="-1" role="dialog" aria-labelledby="confirmationPopupLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmationPopupLabel">Confirmação</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Você realmente deseja cancelar o seu pedido?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+            <button type="button" class="btn btn-success">Sim</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <main class="container">
         @if ($request_info)
         <section class="request-view" id="{{$request_info->id}}">
@@ -77,15 +98,15 @@
                     </div>
                 </div>
             </div>
-            <button onclick="deleteRequest(this)" class="btn btn-danger btn-cancel-request">Cancelar pedido</button>
+            <button class="btn btn-danger btn-cancel-request" data-toggle="modal" data-target="#confirmationPopup">Cancelar pedido</button>
         </section>
         @endif
 
         @if (!$request_info)
-        <a class="btn btn-secondary" href="/request">Fazer pedido</a>
+        <a class="btn btn-secondary make-request-link" href="/request">Fazer pedido</a>
         @endif
 
-        <a class="btn btn-secondary" href="/menu">Ver Cardápio</a>
+        <a class="btn btn-secondary see-menu-link" href="/menu">Ver Cardápio</a>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

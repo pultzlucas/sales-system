@@ -72,7 +72,10 @@ class RequestController extends Controller
 
         $db = app('firebase.database');
         $db_req = $db->getReference("/requests/$id");
-        $db_req->set(['state' => $request->state]);
+        $db_req->set([
+            'id' => $id,
+            'state' => $request->state
+        ]);
 
         return $request_el;
     }

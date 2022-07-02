@@ -22,7 +22,7 @@
     font-weight: bold;
 }
 
-.btn-secondary
+.make-request-link, .see-menu-link
 {
     margin: 10px 0px;
     padding: 40px;
@@ -30,7 +30,7 @@
     font-size: 2rem;
 }
 
-.btn-danger
+.btn-cancel-request
 {
     margin-top: 20px;
 }
@@ -43,7 +43,7 @@
     padding: 20px 24px;
 }
 
-.alert .close
+.close
 {
     border: none;
     font-weight: bold;
