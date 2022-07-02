@@ -32,24 +32,37 @@ function changeRequestState(state) {
 }
 
 function displayStateMessage(state) {
+    const getAlertHTML = message => `
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>`
+
+    const insertAlertOnPage = message => {
+        const alertArea = document.querySelector('.alert-area')
+        alertArea.innerHTML += getAlertHTML(message)
+    }
+
     switch(Number(state)) {
         case 0: // Denied
-            alert('Seu pedido foi cancelado')
+            insertAlertOnPage('Seu pedido foi cancelado')
             break
         case 1: // Waiting confirmation
-            alert('Esperando confirmação do pedido na barraca. Quando for confirmado aparecerá no status do pedido')
+            insertAlertOnPage('Esperando confirmação do pedido na barraca. Quando for confirmado aparecerá no status do pedido')
             break
         case 2: // Pending
-            alert('Seu pedido está em preparo. Logo logo ele estará pronto, só esperar')
+            insertAlertOnPage('Seu pedido está em preparo. Logo logo ele estará pronto, só esperar')
             break
         case 3: // Finished
-            alert('Seu pedido está pronto!!! Para retirar redija-se até a nossa barraca')
+            insertAlertOnPage('Seu pedido está pronto!!! Para retirar redija-se até a nossa barraca')
             break
         case 4: // Delivered
-            alert('Seu pedido foi entregue. Bom apetite!')
+            insertAlertOnPage('Seu pedido foi entregue. Bom apetite!')
             break
         default:// Unknown
-            alert('Algum erro inesperado ocorreu com o seu pedido. Tente novamente mais tarde')
+            insertAlertOnPage('Algum erro inesperado ocorreu com o seu pedido. Tente novamente mais tarde')
     }
 }
 

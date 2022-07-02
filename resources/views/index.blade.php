@@ -15,16 +15,18 @@
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    @if (Session::has('error'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{Session::get('error')}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="alert-area">
+        @if (Session::has('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{Session::get('error')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
     </div>
-    @endif
-    
-    <!-- Modal -->
+
+    <!-- Popup -->
     <div class="modal fade" id="confirmationPopup" tabindex="-1" role="dialog" aria-labelledby="confirmationPopupLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::directive('to_currency', function ($price) {
             return "<?php 
-                echo 'R$' . str_replace('.', ',', number_format($price, 2)); 
+                echo 'R$ ' . str_replace('.', ',', number_format($price, 2)); 
             ?>";
         });
 
