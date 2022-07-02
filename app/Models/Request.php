@@ -30,12 +30,7 @@ class Request extends Model
         $requests_full_info = [];
 
         foreach($requests as $req) {
-            $request_products = Product::getProductsOfRequest($req->id);
-            $total_price = array_reduce($request_products, function($total, $item) {return $total + $item->price;}, 0.00);
-
-            $req->items = $request_products;
-            $req->total_price = $total_price;
-            array_push($requests_full_info, $req);
+            array_push($requests_full_info, Request::getFullInfo($req->id));
         }
 
         return $requests_full_info;

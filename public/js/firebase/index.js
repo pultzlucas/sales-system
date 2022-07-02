@@ -73,7 +73,7 @@ function getTextColorFromState(state) {
 function getRequestStateText(state) {
     switch (Number(state)) {
         case 0:
-           return 'Negado'
+           return 'Cancelado'
         case 1:
            return 'Esperando confirmação'
         case 2:

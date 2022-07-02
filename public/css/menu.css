@@ -1,14 +1,45 @@
 @import "./main.css";
 
-h1
+:root
+{
+    --img-w: 100px;
+    --back-icon-size: 34px;
+}
+
+header a
+{
+    color: #333;
+}
+
+header a:hover
+{
+    color: #666;
+}
+
+header svg
+{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: var(--back-icon-size);
+    height: var(--back-icon-size);
+}
+
+header h1
 {
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.6rem;
     text-transform: uppercase;
+}
+
+header hr
+{
+    margin: 5px 0px;
 }
 
 .products
 {
+    width: 100%;
     display: flex;
     flex-direction: row;
     margin: auto;
@@ -17,33 +48,41 @@ h1
 
 .product
 {
-    flex-grow: 1;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    min-width: 320px;
+    width: 100%;    
     margin-top: 10px;
     transition: .5s;
+    align-items: center;
 }
 
 .product:hover
 {
-    background: #f6f6f6;
-    transform: translateY(-10px);
+    background: #f0f0f0;
+    transform: translateY(-2px);
 }
 
-.product h2
+.product .product-title
 {
-    font-size: 2.6rem;
+    font-size: 2rem;
     color: #333;
+    font-weight: bold;
+    margin: 0px;
 }
 
 .product img 
 {
-    max-height: 300px;
-    max-width: 300px;
-    min-height: 300px;
-    min-width: 300px;
+    max-height: var(--img-w);
+    max-width: var(--img-w);
+    min-height: var(--img-w);
+    min-width: var(--img-w);
+}
+
+.product .body
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-left: 20px;
 }
 
 .product .price
@@ -52,6 +91,11 @@ h1
     background-color: #777;
     color: #fff;
     padding: 10px;
-    width: 300px;
     margin-top: 10px;
+}
+
+.product .description
+{
+    margin-top: 10px;
+    text-align: justify;
 }

@@ -32,7 +32,7 @@
                 <button type="button" id="state_4" class="nav-link">Entregues</button>
             </li>
             <li class="nav-item">
-                <button type="button" id="state_0" class="nav-link">Negados</button>
+                <button type="button" id="state_0" class="nav-link">Cancelados</button>
             </li>
         </ul>
         <div class="d-flex justify-content-center">
