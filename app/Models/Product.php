@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Product extends Model
 {
     use HasFactory;
+    protected $fillable = ['stock'];
 
     static function getProductsOfRequest($request_id)
     {

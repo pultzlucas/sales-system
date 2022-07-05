@@ -23,19 +23,22 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Carne',
                 'description' => 'Carne bla',
                 'price' => 10.00,
-                'img_url' => 'https://i0.wp.com/shoppingdostemperos.com.br/wp-content/uploads/2018/10/Espetinho-De-Carne-Como-Fazer.png?fit=348%2C341&ssl=1'
+                'img_url' => 'https://i0.wp.com/shoppingdostemperos.com.br/wp-content/uploads/2018/10/Espetinho-De-Carne-Como-Fazer.png?fit=348%2C341&ssl=1',
+                'stock' => 50
             ])->id,
             Product::create([
                 'name' => 'Kafta',
                 'description' => 'Kafta bla',
                 'price' => 8.00,
-                'img_url' => 'https://t2.rg.ltmcdn.com/pt/posts/2/5/2/kafta_de_frango_1252_orig.jpg'
+                'img_url' => 'https://t2.rg.ltmcdn.com/pt/posts/2/5/2/kafta_de_frango_1252_orig.jpg',
+                'stock' => 50
             ])->id,
             Product::create([
                 'name' => 'Queijo Coalho',
                 'description' => 'Queijo Coalho bla',
                 'price' => 6.00,
-                'img_url' => 'https://www.vivaespetos.com.br/wp-content/uploads/2019/05/quijocoalho.jpg'
+                'img_url' => 'https://www.vivaespetos.com.br/wp-content/uploads/2019/05/quijocoalho.jpg',
+                'stock' => 50
             ])->id,
             Product::create([
                 'name' => 'Medalhão',
