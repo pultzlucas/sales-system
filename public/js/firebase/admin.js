@@ -24,6 +24,7 @@ async function addRequestsByState(snapshot, state) {
             listHTML += await getRequestHTML(id)
         }
         setRequestList(listHTML)
+        checkIfExistsRequestsOnList()
     }
 }
 
@@ -68,7 +69,6 @@ function initList(getRequestCb, onValueCb) {
     document.querySelector('.spinner-border').removeAttribute('hidden')
     getRequestCb().then(reqs => {
         setRequestsOfDB(reqs)
-        checkIfExistsRequestsOnList()
         onValue(requests, onValueCb)
         document.querySelector('.spinner-border').setAttribute('hidden', '')
     })
