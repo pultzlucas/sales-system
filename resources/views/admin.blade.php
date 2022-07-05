@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
+    <a href="/admin/request" class="btn btn-secondary">Cadastrar Pedido</a>
     <main class="container">
         <h1>Pedidos</h1>
 
@@ -44,7 +45,6 @@
         <ul class="requests"></ul>
     </main>
 
-    <script type="module" src="/js/admin/load-requests.js"></script>
     <script type="module" src="/js/firebase/admin.js"></script>
     <script src="/js/admin/index.js"></script>
     <script src="/js/spinner.js"></script>

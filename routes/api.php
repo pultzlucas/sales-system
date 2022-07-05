@@ -17,3 +17,6 @@ Route::put('/requests/{id}', [RequestController::class, 'update']);
 Route::delete('/requests/{id}', [RequestController::class, 'destroy']);
 
 Route::post('/request_products', [RequestProductController::class, 'store']);
+Route::post('/admin/request_products', [RequestProductController::class, 'store']);
+
+Route::post('/admin/requests', [RequestController::class, 'adminStore']);

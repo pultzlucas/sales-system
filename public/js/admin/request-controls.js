@@ -7,10 +7,7 @@ function increaseState(requestId, btn) {
         .then(({ state, id }) => {
             fetch(`/api/requests/${id}?state=${Number(state) + 1}`, { method: 'PUT' })
                 .then(res => res.json())
-                .then(req => {
-                    if(state !== '1') {
-                        removeRequestFromList(req)
-                    }
+                .then(() => {
                     removeSpinnerFromBtn(btn)
                 })
         })

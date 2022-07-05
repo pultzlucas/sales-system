@@ -24,6 +24,12 @@ class RequestController extends Controller
         return RequestModel::getAllFullInfoByState((string) $state);
     }
 
+    function adminStore(Request $request) {
+        return RequestModel::create([
+            'state' => '2'
+        ]);
+    }
+
     function store(Request $request)
     {
         $customer = Customer::where('ip_address', '=', $request->ip())->first();

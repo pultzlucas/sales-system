@@ -8,34 +8,46 @@ const requestItemsList = []
 
 const finishRequestBtn = document.querySelector('.btn-finish-request')
 
-document.querySelector('.btn-finish-request').addEventListener('click', finishRequest)
+document.querySelector('.btn-finish-request').addEventListener('click', e => {
+    const isAdmin = document.querySelector('main').classList.contains('admin')
+    finishRequest(e, isAdmin)
+})
+
 document.querySelectorAll('.product').forEach(item => {
     item.querySelector('button').addEventListener('click', addToRequest)
 })
 
-function finishRequest(e)
+function finishRequest(e, isAdmin)
 {
     const btn = e.target
     addSpinnerToBtn(btn)
-    fetch('api/requests', { method: 'POST' })
+
+    const urls = {
+        addRequest: isAdmin ? '/api/admin/requests' : '/api/requests',
+        addRequestProduct: isAdmin ? '/api/request_products' : '/api/admin/request_products',
+        redirect: isAdmin ? '/admin' : '/'
+    }
+
+    fetch(urls.addRequest, { method: 'POST' })
         .then(res => res.json())
         .then(({ id: requestId }) => {
             // Linking items to request
             requestItemsList
                 .map(({ id }) => id)
                 .forEach(itemId => {
-                    fetch(`/api/request_products?product_id=${itemId}&request_id=${requestId}`, {method: 'POST'})
+                    fetch(`${urls.addRequestProduct}?product_id=${itemId}&request_id=${requestId}`, {method: 'POST'})
                 })
 
             // Save request on real time database
             set(ref(db, 'requests/' + requestId), {
                 id: requestId,
-                state: '1'
+                state: isAdmin ? '2' : '1'
             })
 
             removeSpinnerFromBtn(btn)
             console.log('Pedido criado com sucesso!')
-            location.assign('/')
+
+            location.assign(urls.redirect)
         })
         .catch(alert)
 }

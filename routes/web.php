@@ -49,5 +49,7 @@ Route::get('/admin', function() {
     return view('admin');
 });
 
-
-
+Route::get('/admin/request', function() {
+    $products = Product::all();
+    return view('admin-request', ['products' => $products]);
+});

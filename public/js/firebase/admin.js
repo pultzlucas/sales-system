@@ -21,14 +21,16 @@ async function addDeniedRequestsToList(snapshot) {
 }
 
 async function addRequestsByState(snapshot, state) {
-    const requestsList = document.querySelector('.requests')
-    resetRequestList()
-    const requests = Object.values(snapshot.val()).filter(req => req.state === state)
-    let listHTML = ''
-    for(let req of requests) {
-        listHTML += await getRequestHTML(req.id)
+    if(snapshot) {
+        const requestsList = document.querySelector('.requests')
+        resetRequestList()
+        const requests = Object.values(snapshot.val()).filter(req => req.state === state)
+        let listHTML = ''
+        for(let req of requests) {
+            listHTML += await getRequestHTML(req.id)
+        }
+        setRequestList(listHTML)
     }
-    setRequestList(listHTML)
 }
 
 async function getRequestHTML(reqId) {
