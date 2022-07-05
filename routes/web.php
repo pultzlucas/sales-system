@@ -10,13 +10,13 @@ use App\Models\Request as RequestModel;
 use Illuminate\Support\Facades\Session;
 
 Route::get('/', function(Request $request) {
-    $customer = Customer::where('ip_address', '=', $request->ip())->first();
+    $customer = Customer::getByIp($request->ip());
 
     if(!$customer) {
         return view('index', ['request_info' => null]);
     }
     
-    $request = Customer::getRequest($customer->id);
+    $request = Customer::getActivedRequest($customer->id);
     
     if(!$request)
     {
@@ -34,7 +34,7 @@ Route::get('/menu', function() {
 });
 
 Route::get('/request', function(Request $request) {
-    $customer = Customer::where('ip_address', '=', $request->ip())->first();
+    $customer = Customer::getByIp($request->ip());
     if($customer && Customer::alreadyRequest($customer->id))
     {
         Session::flash('error', 'Não é permitido fazer 2 ou mais pedidos ao mesmo tempo');

@@ -11,13 +11,31 @@ class Customer extends Model
     use HasFactory;
     protected $fillable = ['ip_address'];
 
-    static function alreadyRequest($customer_id)
-    {
-        return !!Customer::getRequest($customer_id);
+    static function getByIp($ip) {
+        return Customer::where('ip_address', '=', $ip)->first();
     }
 
-    static function getRequest($customer_id)
+    static function alreadyRequest($customer_id)
     {
-        return RequestModel::where('customer_id', '=', $customer_id)->first();
+        $requests = Customer::getAllRequests($customer_id);
+        foreach($requests as $req) {
+            if($req->actived) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static function getAllRequests($customer_id)
+    {
+        return RequestModel::where('customer_id', '=', $customer_id);
+    }
+
+    static function getActivedRequest($customer_id)
+    {
+        return RequestModel::where([
+            ['customer_id', '=', $customer_id],
+            ['actived', '=', '1']
+        ])->first();
     }
 }

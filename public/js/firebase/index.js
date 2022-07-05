@@ -10,8 +10,29 @@ if(requestId) {
             removeCancelRequestBtn(state)
             changeRequestState(state)
             displayStateMessage(state)
+
+            if(state == 0 || state == 4) {
+                deleteRequestView()
+                addMakeRequestBtn()
+            }
         }
     })
+}
+
+function addMakeRequestBtn(){
+    // <a class="btn btn-secondary make-request-link" href="/request">Fazer pedido</a>
+    const a = document.createElement('a')
+    a.classList.add('btn', 'btn-secondary', 'make-request-link')
+    a.href = '/request'
+    a.textContent = 'Fazer pedido'
+
+    const container = document.querySelector('.container')
+    container.insertAdjacentElement('afterbegin', a)
+}
+
+function deleteRequestView() {
+    const requestView = document.querySelector('.request-view')
+    requestView.remove()
 }
 
 function removeCancelRequestBtn(state) {

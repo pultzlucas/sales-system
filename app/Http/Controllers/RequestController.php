@@ -32,7 +32,7 @@ class RequestController extends Controller
 
     function store(Request $request)
     {
-        $customer = Customer::where('ip_address', '=', $request->ip())->first();
+        $customer = Customer::getByIp($request->ip());
         if(!$customer)
         {
             $customer = Customer::create([
@@ -74,15 +74,20 @@ class RequestController extends Controller
     {
         $request_el = RequestModel::findOrFail($id);
         $request_el->state = $request->state;
-        $request_el->save();
-
+        
         $db = app('firebase.database');
         $db_req = $db->getReference("/requests/$id");
+
+        if($request->state == 0 || $request->state == 4) {
+            $request_el->actived = false;
+        } 
+
         $db_req->set([
             'id' => $id,
             'state' => $request->state
         ]);
 
+        $request_el->save();
         return $request_el;
     }
 }
