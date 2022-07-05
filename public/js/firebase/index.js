@@ -7,7 +7,6 @@ if(requestId) {
     onValue(requests, snapshot => {
         if(snapshot.val()) {
             const state = snapshot.val().state
-            removeCancelRequestBtn(state)
             changeRequestState(state)
             displayStateMessage(state)
 
@@ -33,14 +32,6 @@ function addMakeRequestBtn(){
 function deleteRequestView() {
     const requestView = document.querySelector('.request-view')
     requestView.remove()
-}
-
-function removeCancelRequestBtn(state) {
-    const btn = document.querySelector('.btn-cancel-request')
-    btn.removeAttribute('hidden')
-    if(state === '4') {
-        btn.setAttribute('hidden', '')
-    }
 }
 
 function changeRequestState(state) {

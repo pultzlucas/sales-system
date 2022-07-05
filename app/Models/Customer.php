@@ -28,7 +28,7 @@ class Customer extends Model
 
     static function getAllRequests($customer_id)
     {
-        return RequestModel::where('customer_id', '=', $customer_id);
+        return RequestModel::where('customer_id', '=', $customer_id)->get();
     }
 
     static function getActivedRequest($customer_id)

@@ -1,5 +1,10 @@
-const requestStatus = document.querySelector('.request_status')
-if(requestStatus) requestStatus.style.color = getTextColorFromState(requestStatus.id)
+const requestStatus = Array.from(document.querySelectorAll('.request_status'))
+
+if(requestStatus.length > 0) {
+    requestStatus.forEach(reqStatus => {
+        reqStatus.style.color = getTextColorFromState(reqStatus.id)
+    })
+}
 
 function getTextColorFromState(state) {
     switch (Number(state)) {

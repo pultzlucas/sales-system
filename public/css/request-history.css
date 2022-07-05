@@ -1,0 +1,62 @@
+@import './main.css';
+
+:root
+{
+    --img-w: 100px;
+    --back-icon-size: 34px;
+}
+
+header a
+{
+    color: #333;
+}
+
+header a:hover
+{
+    color: #666;
+}
+
+header svg
+{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: var(--back-icon-size);
+    height: var(--back-icon-size);
+}
+
+header h1
+{
+    text-align: center;
+    font-size: 2.6rem;
+    text-transform: uppercase;
+}
+
+header hr
+{
+    margin: 5px 0px;
+}
+
+.container
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.request
+{
+    border: 2px #eee solid;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+
+.request .request-total-price
+{
+    background-color: #eee;
+    padding: 2px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+

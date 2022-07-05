@@ -12,7 +12,7 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 </script>
 
-    <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
     <div class="alert-area">
@@ -109,6 +109,7 @@
         @endif
 
         <a class="btn btn-secondary see-menu-link" href="/menu">Ver Cardápio</a>
+        <a class="btn btn-secondary see-menu-link" href="/request_history">Histórico de Pedidos</a>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

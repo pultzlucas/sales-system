@@ -21,18 +21,19 @@
         <hr>
     </header>
     <main class="container">
-    <div class="products">
-        @foreach ($products as $prod)
-        <div class="product">
-            <img class="box" src="{{$prod->img_url}}" alt="{{$prod->name}} image">
-            <div class="body">
-                <span class="product-title">{{ $prod->name }}</span>
-                <span class="price box">@to_currency($prod->price)</span>
-                {{-- <p class="description">{{$prod->description}}</p> --}}
+        <div class="products">
+            @foreach ($products as $prod)
+            <div class="product">
+                <img class="box" src="{{$prod->img_url}}" alt="{{$prod->name}} image">
+                <div class="body">
+                    <span class="product-title">{{ $prod->name }}</span>
+                    <span class="price box">@to_currency($prod->price)</span>
+                    {{-- <p class="description">{{$prod->description}}</p> --}}
+                </div>
             </div>
+            @endforeach
         </div>
-        @endforeach
-    </div>
+    </main>
 </body>
 
 </html>
