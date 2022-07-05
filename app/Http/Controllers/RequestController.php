@@ -56,7 +56,7 @@ class RequestController extends Controller
 
         $db = app('firebase.database');
         $db_req = $db->getReference("/requests/$id");
-        $db_req->set(null);
+        $db_req->remove();
         
         if(RequestModel::destroy($id))
         {

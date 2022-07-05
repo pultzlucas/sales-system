@@ -1,6 +1,6 @@
 export default function getRequestElement(req) {
     return `
-    <li id="${req.id}">
+    <li id="${req.id}" data-id="${req.id}">
     <div class="card">
         <div class="card-body">
             <table class="table">
