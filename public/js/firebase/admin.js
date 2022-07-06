@@ -12,7 +12,7 @@ onChildRemoved(ref(db, `requests`), snapshot => {
 })
 
 async function addRequestsByState(snapshot, state) {
-    if (snapshot) {
+    if (snapshot.val()) {
         const requests = Object.values(snapshot.val()).filter(req => req.state === state)
 
         const ids = requests

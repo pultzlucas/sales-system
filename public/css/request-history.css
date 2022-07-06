@@ -60,3 +60,10 @@ header hr
     font-weight: bold;
 }
 
+.requests-placeholder
+{
+    text-align: center;
+    color: #666;
+    margin-top: 20px;
+}
+

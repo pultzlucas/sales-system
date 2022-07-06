@@ -30,6 +30,24 @@ class AppServiceProvider extends ServiceProvider
             ?>";
         });
 
+        Blade::directive('translate_payment', function ($payment) {
+            return "<?php 
+                switch ($payment) {
+                    case 'pix':
+                        echo 'Pix';
+                        break;
+                    case 'card':
+                        echo 'Cartão';
+                        break;
+                    case 'coin':
+                        echo 'Dinheiro';
+                        break;
+                    default:
+                        echo 'Método Inválido';
+                }
+            ?>";
+        });
+
         Blade::directive('translate_status', function ($status) {
             return "<?php 
             switch ($status) {

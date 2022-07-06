@@ -10,7 +10,7 @@ use App\Models\Product;
 class Request extends Model
 {
     use HasFactory;
-    protected $fillable = ['customer_id', 'state', 'actived'];
+    protected $fillable = ['customer_id', 'state', 'actived', 'payment'];
 
     static function getFullInfo($id)
     {

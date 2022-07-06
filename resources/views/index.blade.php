@@ -65,6 +65,10 @@
                     <td><span class="request-total-price">@to_currency($request_info->total_price)</span></td>
                 </tr>
                 <tr>
+                    <td><strong>Método de pagamento</strong></td>
+                    <td><span class="request-payment" data-payment="{{$request_info->payment}}">@translate_payment($request_info->payment)</span></td>
+                </tr>
+                <tr>
                     <td><strong>Pedido feito em</strong></td>
                     <td>{{$request_info->created_at}}</td>
                 </tr>

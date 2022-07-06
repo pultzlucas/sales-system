@@ -57,11 +57,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $request1 = RequestModel::create([
-            'customer_id' => $customer1->id
+            'customer_id' => $customer1->id,
+            'payment' => 'pix'
         ]);
-
+        
         $request2 = RequestModel::create([
-            'customer_id' => $customer2->id
+            'customer_id' => $customer2->id,
+            'payment' => 'card'
         ]);
 
         $db = app('firebase.database');

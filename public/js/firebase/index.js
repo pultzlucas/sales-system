@@ -2,6 +2,7 @@ import db from './config.js'
 import { ref, onValue } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-database.js"
 
 const requestId = document.querySelector('.request-id')
+
 if(requestId) {
     const requests = ref(db, `requests/${requestId.textContent}`)        
     onValue(requests, snapshot => {
@@ -10,16 +11,20 @@ if(requestId) {
             changeRequestState(state)
             displayStateMessage(state)
 
-            if(state == 0 || state == 4) {
+            const reqIsDesactive = state == 0 || state == 4
+            if(reqIsDesactive) {
                 deleteRequestView()
                 addMakeRequestBtn()
+            }
+
+            if(state != 1) {
+                deleteRemoveRequestBtn()
             }
         }
     })
 }
 
 function addMakeRequestBtn(){
-    // <a class="btn btn-secondary make-request-link" href="/request">Fazer pedido</a>
     const a = document.createElement('a')
     a.classList.add('btn', 'btn-secondary', 'make-request-link')
     a.href = '/request'
@@ -27,6 +32,11 @@ function addMakeRequestBtn(){
 
     const container = document.querySelector('.container')
     container.insertAdjacentElement('afterbegin', a)
+}
+
+function deleteRemoveRequestBtn() {
+    const btn = document.querySelector('.btn-cancel-request')
+    if(btn) btn.remove()
 }
 
 function deleteRequestView() {

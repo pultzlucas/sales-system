@@ -26,7 +26,8 @@ class RequestController extends Controller
 
     function adminStore(Request $request) {
         return RequestModel::create([
-            'state' => '2'
+            'state' => '2',
+            'payment' => $request->payment
         ]);
     }
 
@@ -42,6 +43,7 @@ class RequestController extends Controller
 
         return RequestModel::create([
             'customer_id' => $customer->id,
+            'payment' => $request->payment
         ]);
     }
 

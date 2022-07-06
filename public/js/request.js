@@ -1,25 +1,28 @@
 import db from './firebase/config.js'
-import { ref, set } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-database.js" 
+import { ref, set } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-database.js"
 
 const requestItemsListElem = document.querySelector('.request-items')
+const requestItemsList = []
+const paymentMethods = ['pix', 'coin', 'card']
+
 let totalRequestPrice = 0.00
 
-const requestItemsList = []
-
 const finishRequestBtn = document.querySelector('.btn-finish-request')
-
 document.querySelector('.btn-finish-request').addEventListener('click', e => {
     const isAdmin = document.querySelector('main').classList.contains('admin')
-    finishRequest(e, isAdmin)
+    const payment = prompt('Enter payment method')
+    finishRequest({
+        btn: e.target,
+        isAdmin,
+        payment
+    })
 })
 
 document.querySelectorAll('.product').forEach(item => {
     item.querySelector('button').addEventListener('click', addToRequest)
 })
 
-function finishRequest(e, isAdmin)
-{
-    const btn = e.target
+function finishRequest({ btn, isAdmin, payment }) {
     addSpinnerToBtn(btn)
 
     const urls = {
@@ -28,14 +31,14 @@ function finishRequest(e, isAdmin)
         redirect: isAdmin ? '/admin' : '/'
     }
 
-    fetch(urls.addRequest, { method: 'POST' })
+    fetch(`${urls.addRequest}?payment=${payment}`, { method: 'POST' })
         .then(res => res.json())
         .then(({ id: requestId }) => {
             // Linking items to request
             requestItemsList
                 .map(({ id }) => id)
                 .forEach(itemId => {
-                    fetch(`${urls.addRequestProduct}?product_id=${itemId}&request_id=${requestId}`, {method: 'POST'})
+                    fetch(`${urls.addRequestProduct}?product_id=${itemId}&request_id=${requestId}`, { method: 'POST' })
                 })
 
             // Save request on real time database
@@ -53,8 +56,7 @@ function finishRequest(e, isAdmin)
 }
 
 
-function addToRequest(e) 
-{
+function addToRequest(e) {
     e.stopPropagation()
     const buttonClicked = e.target
     const productId = e.target.parentNode.parentNode.parentNode.id

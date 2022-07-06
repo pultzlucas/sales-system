@@ -24,59 +24,69 @@
         <hr>
     </header>
     <main class="container">
+        @if(!$requests)
+        <span class="requests-placeholder">Você ainda não fez nenhum pedido</span>
+        @endif
+
+        @if($requests)
         @foreach($requests as $request)
-        <div class="request" id="{{$request->id}}">
-            <table class="table">
-                <tr>
-                    <td><strong>Número</strong></td>
-                    <td class="request-id">{{$request->id}}</td>
-                </tr>
-                <tr>
-                    <td><strong>Status do pedido</strong></td>
-                    <td class="request_status" id="{{$request->state}}"><strong>@translate_status($request->state)</strong></td>
-                </tr>
-                <tr>
-                    <td><strong>Preço total</strong></td>
-                    <td><span class="request-total-price">@to_currency($request->total_price)</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Pedido feito em</strong></td>
-                    <td>{{$request->created_at}}</td>
-                </tr>
-            </table>
-           
-            <div class="accordion-item request-items">
-                <h3 class="accordion-header" id="heading_{{$request->id}}">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse_{{$request->id}}" aria-expanded="false"
-                        aria-controls="collapse_{{$request->id}}">
-                        <strong>Itens do Pedido</strong>
-                    </button>
-                </h3>
-                <div id="collapse_{{$request->id}}" class="accordion-collapse collapse"
-                    aria-labelledby="heading_{{$request->id}}" data-bs-parent="#routesAccordion">
-                    <div class="accordion-body">
-                        <table class="table">
-                           <thead>
-                            <tr>
-                                <th>Descrição</th>
-                                <th>Preço</th>
-                            </tr>
-                           </thead>
-                           <tbody>
-                            @foreach ($request->items as $item)
-                                <tr class="request-item">
-                                    <td>{{$item->name}}</td>
-                                    <td>@to_currency($item->price)</td>
+            <div class="request" id="{{$request->id}}">
+                <table class="table">
+                    <tr>
+                        <td><strong>Número</strong></td>
+                        <td class="request-id">{{$request->id}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Status do pedido</strong></td>
+                        <td class="request_status" id="{{$request->state}}"><strong>@translate_status($request->state)</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Preço total</strong></td>
+                        <td><span class="request-total-price">@to_currency($request->total_price)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Método de pagamento</strong></td>
+                        <td><span class="request-payment" data-payment="{{$request->payment}}">@translate_payment($request->payment)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pedido feito em</strong></td>
+                        <td>{{$request->created_at}}</td>
+                    </tr>
+                </table>
+            
+                <div class="accordion-item request-items">
+                    <h3 class="accordion-header" id="heading_{{$request->id}}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse_{{$request->id}}" aria-expanded="false"
+                            aria-controls="collapse_{{$request->id}}">
+                            <strong>Itens do Pedido</strong>
+                        </button>
+                    </h3>
+                    <div id="collapse_{{$request->id}}" class="accordion-collapse collapse"
+                        aria-labelledby="heading_{{$request->id}}" data-bs-parent="#routesAccordion">
+                        <div class="accordion-body">
+                            <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Preço</th>
                                 </tr>
-                            @endforeach
-                           </tbody>
-                        </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($request->items as $item)
+                                    <tr class="request-item">
+                                        <td>{{$item->name}}</td>
+                                        <td>@to_currency($item->price)</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        @endforeach           
+            @endforeach 
+        @endif          
     </main>
     <script src="/js/utils/color-rq-state.js"></script>
 </body>

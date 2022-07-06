@@ -47,6 +47,11 @@ Route::get('/request', function(Request $request) {
 
 Route::get('/request_history', function(Request $request) {
     $customer = Customer::getByIp($request->ip());
+
+    if(!$customer) {
+        return view('request-history', ['requests' => null]);
+    }
+
     $requests = array_map(function($req) {
         return RequestModel::getFullInfo($req['id']);
     }, array_reverse(Customer::getAllRequests($customer->id)->toArray()));

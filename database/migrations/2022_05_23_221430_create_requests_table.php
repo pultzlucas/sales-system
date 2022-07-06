@@ -23,6 +23,7 @@ return new class extends Migration
                 '3', // Finished
                 '4'  // Delivered
             ])->default('1');
+            $table->enum('payment', ['pix', 'coin', 'card']);
             $table->boolean('actived')->default(1);
             $table->timestamps();
 
