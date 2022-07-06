@@ -41,7 +41,9 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
-            <button type="button" class="btn btn-success">Sim</button>
+            <button type="button" class="btn btn-success btn-yes">
+                <span class="title">Sim</span>
+            </button>
           </div>
         </div>
       </div>
@@ -123,6 +125,7 @@
           $('.alert').alert()
         })
     </script>
+    <script src="/js/spinner.js"></script>
     <script src="/js/utils/color-rq-state.js"></script>
     <script src="/js/dashboard.js"></script>
     <script type="module" src="/js/firebase/dashboard.js"></script>

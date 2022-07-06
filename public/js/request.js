@@ -1,6 +1,10 @@
 import db from './firebase/config.js'
 import { ref, set } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-database.js"
 
+document.querySelectorAll('.product').forEach(item => {
+    item.querySelector('button').addEventListener('click', addToRequest)
+})
+
 const requestItemsListElem = document.querySelector('.request-items')
 const requestItemsList = []
 const paymentMethods = ['pix', 'coin', 'card']
@@ -8,21 +12,27 @@ const paymentMethods = ['pix', 'coin', 'card']
 let totalRequestPrice = 0.00
 
 const finishRequestBtn = document.querySelector('.btn-finish-request')
-document.querySelector('.btn-finish-request').addEventListener('click', e => {
+
+const addictionalInfoform = document.querySelector('#addictional-req-info')
+
+addictionalInfoform.addEventListener('submit', e => {
+    e.preventDefault()
+    const form = e.target
+
+    // Form fields
+    const payment = form.querySelector('#payment_method').value
+    const tableNumber = form.querySelector('#table_number').value
+
     const isAdmin = document.querySelector('main').classList.contains('admin')
-    const payment = prompt('Insira o método de pagamento (pix, card, coin)')
-    const tableNumber = prompt('Insira o número da sua mesa')
+
     finishRequest({
-        btn: e.target,
+        btn: form.querySelector('[type="submit"]'),
         isAdmin,
         payment,
         tableNumber
     })
 })
 
-document.querySelectorAll('.product').forEach(item => {
-    item.querySelector('button').addEventListener('click', addToRequest)
-})
 
 function finishRequest({ btn, isAdmin, payment, tableNumber }) {
     addSpinnerToBtn(btn)
