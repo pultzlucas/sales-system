@@ -1,0 +1,54 @@
+@import './main.css';
+
+.container
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.request-view
+{
+    border: 2px #eee solid;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.request-view .request-total-price
+{
+    background-color: #eee;
+    padding: 2px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.make-request-link, .see-menu-link
+{
+    margin: 10px 0px;
+    padding: 40px;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.btn-cancel-request
+{
+    margin-top: 20px;
+}
+
+.alert
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+}
+
+.close
+{
+    border: none;
+    font-weight: bold;
+    font-size: 1.4rem;
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px 10px
+}

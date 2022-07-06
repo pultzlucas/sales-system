@@ -48,63 +48,63 @@ class DatabaseSeeder extends Seeder
             ])->id
         ];
 
-        $customer1 = Customer::create([
-            'cpf' => '37137925855'
-        ]);
+        // $customer1 = Customer::create([
+        //     'cpf' => '37137925855'
+        // ]);
         
-        $customer2 = Customer::create([
-            'cpf' => '37237925855'
-        ]);
+        // $customer2 = Customer::create([
+        //     'cpf' => '37237925855'
+        // ]);
 
-        $request1 = RequestModel::create([
-            'customer_id' => $customer1->id,
-            'payment' => 'pix',
-            'table_number' => 12
-        ]);
+        // $request1 = RequestModel::create([
+        //     'customer_id' => $customer1->id,
+        //     'payment' => 'pix',
+        //     'table_number' => 12
+        // ]);
         
-        $request2 = RequestModel::create([
-            'customer_id' => $customer2->id,
-            'payment' => 'card',
-            'table_number' => 1
-        ]);
+        // $request2 = RequestModel::create([
+        //     'customer_id' => $customer2->id,
+        //     'payment' => 'card',
+        //     'table_number' => 1
+        // ]);
 
-        $db = app('firebase.database');
+        // $db = app('firebase.database');
 
-        $db->getReference("/requests")->set(null);
+        // $db->getReference("/requests")->set(null);
 
-        $db->getReference("/requests/$request1->id")->set([
-            'state' => '1',
-            'id' => $request1->id
-        ]);
+        // $db->getReference("/requests/$request1->id")->set([
+        //     'state' => '1',
+        //     'id' => $request1->id
+        // ]);
 
-        $db->getReference("/requests/$request2->id")->set([
-            'state' => '1',
-            'id' => $request2->id
-        ]);
+        // $db->getReference("/requests/$request2->id")->set([
+        //     'state' => '1',
+        //     'id' => $request2->id
+        // ]);
 
-        RequestProduct::create([
-            'request_id' => $request1->id,
-            'product_id' => $items[0]
-        ]);
+        // RequestProduct::create([
+        //     'request_id' => $request1->id,
+        //     'product_id' => $items[0]
+        // ]);
         
-        RequestProduct::create([
-            'request_id' => $request1->id,
-            'product_id' => $items[1]
-        ]);
+        // RequestProduct::create([
+        //     'request_id' => $request1->id,
+        //     'product_id' => $items[1]
+        // ]);
 
-        RequestProduct::create([
-            'request_id' => $request2->id,
-            'product_id' => $items[0]
-        ]);
+        // RequestProduct::create([
+        //     'request_id' => $request2->id,
+        //     'product_id' => $items[0]
+        // ]);
         
-        RequestProduct::create([
-            'request_id' => $request2->id,
-            'product_id' => $items[1]
-        ]);
+        // RequestProduct::create([
+        //     'request_id' => $request2->id,
+        //     'product_id' => $items[1]
+        // ]);
 
-        RequestProduct::create([
-            'request_id' => $request2->id,
-            'product_id' => $items[1]
-        ]);
+        // RequestProduct::create([
+        //     'request_id' => $request2->id,
+        //     'product_id' => $items[1]
+        // ]);
     }
 }

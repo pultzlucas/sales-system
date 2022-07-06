@@ -11,17 +11,27 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 </script>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <h1>Junete - Churrasco</h1>
-    <form action="/api/login" method="POST">
-        @csrf
-        <div class="form-floating">
-            <input type="text" class="form-control" name="cpf" id="floatingCpf" placeholder="Digite seu CPF">
-            <label for="floatingCpf">Digite seu CPF</label>
+    <main class="container">
+        <h1>Junete - Churrasco</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/api/login" method="POST">
+                    @csrf
+                    <div class="form-floating">
+                        <input id="cpf_input" type="number" class="form-control" name="cpf" id="floatingCpf" placeholder="Digite seu CPF" required>
+                        <label for="floatingCpf">Digite seu CPF</label>
+                    </div>
+                    <div class="mt-2">
+                        <button type="submit" class="btn btn-success btn-ok">Ok</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <button type="submit" class="btn btn-success">Ok</button>
-    </form>
+    </main>
+    <script src="/js/index.js"></script>
 </body>
 
 </html>
