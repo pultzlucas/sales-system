@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Request as RequestModel;
 use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cookie;
 
 class RequestController extends Controller
 {
@@ -27,24 +28,23 @@ class RequestController extends Controller
     function adminStore(Request $request) {
         return RequestModel::create([
             'state' => '2',
-            'payment' => $request->payment
+            'payment' => $request->payment,
+            'table_number' => $request->table
         ]);
     }
-
+    
     function store(Request $request)
     {
-        $customer = Customer::getByIp($request->ip());
-        if(!$customer)
-        {
-            $customer = Customer::create([
-                'ip_address' => $request->ip()
-            ]);
-        }
+        $cpf = $request->session()->get('CUSTOMER_CPF');
+        $customer = Customer::getByCpf($cpf);
 
-        return RequestModel::create([
+        $request = RequestModel::create([
             'customer_id' => $customer->id,
-            'payment' => $request->payment
+            'payment' => $request->payment,
+            'table_number' => $request->table
         ]);
+
+        return $request;
     }
 
     function destroy($id)

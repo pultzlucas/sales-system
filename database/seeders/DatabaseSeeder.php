@@ -49,21 +49,23 @@ class DatabaseSeeder extends Seeder
         ];
 
         $customer1 = Customer::create([
-            'ip_address' => '192.234.234.1'
+            'cpf' => '37137925855'
         ]);
         
         $customer2 = Customer::create([
-            'ip_address' => '192.234.234.2'
+            'cpf' => '37237925855'
         ]);
 
         $request1 = RequestModel::create([
             'customer_id' => $customer1->id,
-            'payment' => 'pix'
+            'payment' => 'pix',
+            'table_number' => 12
         ]);
         
         $request2 = RequestModel::create([
             'customer_id' => $customer2->id,
-            'payment' => 'card'
+            'payment' => 'card',
+            'table_number' => 1
         ]);
 
         $db = app('firebase.database');

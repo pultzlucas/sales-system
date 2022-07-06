@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\RequestProductController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'get']);
@@ -20,3 +21,6 @@ Route::post('/request_products', [RequestProductController::class, 'store']);
 Route::post('/admin/request_products', [RequestProductController::class, 'store']);
 
 Route::post('/admin/requests', [RequestController::class, 'adminStore']);
+
+//AUTH
+Route::post('/login', [AuthController::class, 'login']);

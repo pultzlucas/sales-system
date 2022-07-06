@@ -9,10 +9,10 @@ use App\Models\Request as RequestModel;
 class Customer extends Model
 {
     use HasFactory;
-    protected $fillable = ['ip_address'];
+    protected $fillable = ['cpf'];
 
-    static function getByIp($ip) {
-        return Customer::where('ip_address', '=', $ip)->first();
+    static function getByCpf($cpf) {
+        return Customer::where('cpf', '=', $cpf)->first();
     }
 
     static function alreadyRequest($customer_id)

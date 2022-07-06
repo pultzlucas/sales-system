@@ -10,11 +10,13 @@ let totalRequestPrice = 0.00
 const finishRequestBtn = document.querySelector('.btn-finish-request')
 document.querySelector('.btn-finish-request').addEventListener('click', e => {
     const isAdmin = document.querySelector('main').classList.contains('admin')
-    const payment = prompt('Enter payment method')
+    const payment = prompt('Insira o método de pagamento (pix, card, coin)')
+    const tableNumber = prompt('Insira o número da sua mesa')
     finishRequest({
         btn: e.target,
         isAdmin,
-        payment
+        payment,
+        tableNumber
     })
 })
 
@@ -22,16 +24,16 @@ document.querySelectorAll('.product').forEach(item => {
     item.querySelector('button').addEventListener('click', addToRequest)
 })
 
-function finishRequest({ btn, isAdmin, payment }) {
+function finishRequest({ btn, isAdmin, payment, tableNumber }) {
     addSpinnerToBtn(btn)
 
     const urls = {
         addRequest: isAdmin ? '/api/admin/requests' : '/api/requests',
         addRequestProduct: isAdmin ? '/api/request_products' : '/api/admin/request_products',
-        redirect: isAdmin ? '/admin' : '/'
+        redirect: isAdmin ? '/admin' : '/dashboard'
     }
 
-    fetch(`${urls.addRequest}?payment=${payment}`, { method: 'POST' })
+    fetch(`${urls.addRequest}?payment=${payment}&table=${tableNumber}`, { method: 'POST' })
         .then(res => res.json())
         .then(({ id: requestId }) => {
             // Linking items to request
