@@ -13,6 +13,10 @@ export default function getRequestElement(req) {
                     <td><span class="request-total-price">${floatToCurrency(req.total_price)}</span></td>
                 </tr>
                 <tr>
+                    <td><strong>Método de pagamento</strong></td>
+                    <td><span class="request-payment" data-payment="${req.payment}">${translatePayment(req.payment)}</span></td>
+                </tr>
+                <tr>
                     <td><strong>Pedido feito em</strong></td>
                     <td>${formatTimestamp(req.created_at)}</td>
                 </tr>
@@ -59,6 +63,19 @@ function getRequestControlsElement(id, state) {
             <span class="title">${getDismissButtonTextFromState(state)}</span>
         </button>
     </div>`: ''
+}
+
+function translatePayment(payment) {
+    switch(payment) {
+        case 'pix':
+            return 'Pix'
+        case 'card':
+            return 'Cartão'
+        case 'coin':
+            return 'Dinheiro'
+        default:
+            return 'Método Inválido'
+    }
 }
 
 function getOKButtonTextFromState(state) {
