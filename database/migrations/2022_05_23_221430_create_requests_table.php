@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id')->nullable();
-            $table->integer('table_number');
+            $table->integer('table_number')->nullable();
             $table->enum('state', [
                 '0', // Denied
                 '1', // Waiting confirmation

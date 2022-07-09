@@ -43,7 +43,7 @@ function finishRequest({ btn, isAdmin, payment, tableNumber }) {
         redirect: isAdmin ? '/admin' : '/dashboard'
     }
 
-    fetch(`${urls.addRequest}?payment=${payment}&table=${tableNumber}`, { method: 'POST' })
+    fetch(`${urls.addRequest}?payment=${payment}${tableNumber ? `&table=${tableNumber}` : ''}`, { method: 'POST' })
         .then(res => res.json())
         .then(({ id: requestId }) => {
             // Linking items to request

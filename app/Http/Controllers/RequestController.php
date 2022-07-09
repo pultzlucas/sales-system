@@ -29,7 +29,7 @@ class RequestController extends Controller
         return RequestModel::create([
             'state' => '2',
             'payment' => $request->payment,
-            'table_number' => $request->table
+            'table_number' => $request->table ? $request->table : null
         ]);
     }
     

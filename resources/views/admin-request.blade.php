@@ -32,7 +32,7 @@
                     <div class="mt-3">
                         <div class="form-floating">
                             <input id="table_number" type="number" class="form-control" id="floatingCpf" 
-                                placeholder="Digite o número da sua mesa" required>
+                                placeholder="Digite o número da sua mesa">
                             <label for="floatingCpf">Digite o número da sua mesa</label>
                         </div>
                     </div>

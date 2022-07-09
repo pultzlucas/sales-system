@@ -1,4 +1,4 @@
-if(prompt('Senha do Admin') !== 'Sergio123') {
+if(prompt('Senha do Admin') !== 'sergio123') {
     history.back()
 }
 
