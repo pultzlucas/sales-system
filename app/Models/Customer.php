@@ -10,6 +10,7 @@ class Customer extends Model
 {
     use HasFactory;
     protected $fillable = ['cpf'];
+    public $timestamps = false;
 
     static function getByCpf($cpf) {
         return Customer::where('cpf', '=', $cpf)->first();

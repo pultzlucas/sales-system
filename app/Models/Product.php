@@ -10,7 +10,8 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable = ['stock'];
-
+    public $timestamps = false;
+    
     static function getProductsOfRequest($request_id)
     {
         return DB::select("SELECT prod.name, prod.price FROM products AS prod
