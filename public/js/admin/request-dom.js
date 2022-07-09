@@ -13,6 +13,10 @@ export default function getRequestElement(req) {
                     <td><span class="request-total-price">${floatToCurrency(req.total_price)}</span></td>
                 </tr>
                 <tr>
+                    <td><strong>Nº da mesa</strong></td>
+                    <td>${req.table_number}</td>
+                </tr>
+                <tr>
                     <td><strong>Método de pagamento</strong></td>
                     <td><span class="request-payment" data-payment="${req.payment}">${translatePayment(req.payment)}</span></td>
                 </tr>

@@ -1,6 +1,6 @@
-// if(prompt('Senha do Admin') !== 'Sergio123') {
-//     history.back()
-// }
+if(prompt('Senha do Admin') !== 'Sergio123') {
+    history.back()
+}
 
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', ({ target }) => {

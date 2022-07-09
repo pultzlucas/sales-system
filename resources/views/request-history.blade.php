@@ -41,6 +41,10 @@
                         <td class="request_status" id="{{$request->state}}"><strong>@translate_status($request->state)</strong></td>
                     </tr>
                     <tr>
+                        <td><strong>Nº da mesa</strong></td>
+                        <td>{{$request->table_number}}</td>
+                    </tr>
+                    <tr>
                         <td><strong>Preço total</strong></td>
                         <td><span class="request-total-price">@to_currency($request->total_price)</span></td>
                     </tr>

@@ -14,6 +14,10 @@ Route::get('/', function(Request $request) {
 });
 
 Route::get('/dashboard', function(Request $request) {
+    if(!$request->session()->has('CUSTOMER_CPF')) {
+        return redirect('/')->with('error', 'Por favor insira seu CPF para utilizar o aplicativo');
+    }
+
     $cpf = $request->session()->get('CUSTOMER_CPF');
     $customer = Customer::getByCpf($cpf);
 
